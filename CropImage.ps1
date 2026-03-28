@@ -1,23 +1,4 @@
-﻿Using Module "C:\Users\vital\Repositories\Utilities\ColorWriter.psm1"
-
-<#
-Script schneidet Bildausschnitte aus vorgegebenen Bildern aus.
-
-Version:
-    0.5:    Auflösung der Ausgabedatei auf 300dpi erhöht. Defaultwert ist/war 96dpi
-    0.4:    Prozentuale Skalierung (Verkleinerung oder Vergrößerung) hinzugefügt.
-    0.3:    Variable Größenangabe für die Output-Datei implementiert. Davor entsprach die Ausgabedatei immer dem Ausschnitt aus dem originalen Bild.
-    0.2:    Bunte Ausgabe von Text und Parameter implementiert.
-    0.1:    Erste Version von CropImage
-
-Useage:
-    . ".\CropImage.ps1"
-    CropImage -s [source] -d [dest] -w [width] -h [height] => -x = 0, -y = 0
-    CropImage -s [source] -d [dest] -x [X-coordinate] -y [Y-coordinate] -w [width] -h [height]
-    CropImage -s [source] -d [dest] -x [X-coordinate] -y [Y-coordinate] -w [width] -h [height] -ow [output width] -oh [output height]
-    CropImage -s [source] -d [dest] -p [percent]
-    CropImage -s "C:\Users\Vitali\Pictures\Screnshots\Screenshot_2023-04-18-08-53-44-95.jpg" -d "C:\Users\Vitali\Pictures\Screnshots\Cuttings\Screenshot_2023-04-18-08-53-44-95-05.jpg" -x 0 -y 12464 -w 1440 -h 3216
-#>
+﻿Using Module "..\Utilities\ColorWriter.psm1"
 
 Function CropImage {
     Param(
@@ -213,50 +194,3 @@ Function CropImage {
         [ColorWriter]::Write(@("$strTitle ", "Blue", "$strVersion ", "Green", "finished", "White"))
     }
 }
-
-
-
-## Benzin-Rechungen ##
-# Benzin-Rechnungen sollten auf 936 x 2800 zugeschnitten werden:
-[String] $strSourcePath = "C:\Users\vital\Documents\IMG_20260125_0003.jpg"
-[String] $strDestPath = "C:\Users\vital\Documents\Finanzen\2025\04 Rohdaten\Sonstige Rechnungen\Scan 11.jpg"
-
-CropImage -s $strSourcePath -d $strDestPath -x 0 -y 0 -w 936 -h 2800
-
-#Parktickets / Parkrechnungen
-# CropImage -s $strSourcePath -d $strDestPath -x 0 -y 0 -w 684 -h 2200
-
-
-<#
-# Generated with: C:\Users\vital\Progs\CropImage\Comman String Generator.xlsx
-CropImage -s "C:\Users\vital\Documents\IMG_20260125_0005.jpg" -d "C:\Users\vital\Documents\Finanzen\2025\04 Rohdaten\Benzin Rechnungen\Scan 31.jpg" -x 0 -y 0 -w 936 -h 2800
-CropImage -s "C:\Users\vital\Documents\IMG_20260125_0006.jpg" -d "C:\Users\vital\Documents\Finanzen\2025\04 Rohdaten\Benzin Rechnungen\Scan 32.jpg" -x 0 -y 0 -w 936 -h 2800
-CropImage -s "C:\Users\vital\Documents\IMG_20260125_0007.jpg" -d "C:\Users\vital\Documents\Finanzen\2025\04 Rohdaten\Benzin Rechnungen\Scan 33.jpg" -x 0 -y 0 -w 936 -h 2800
-CropImage -s "C:\Users\vital\Documents\IMG_20260125_0008.jpg" -d "C:\Users\vital\Documents\Finanzen\2025\04 Rohdaten\Benzin Rechnungen\Scan 34.jpg" -x 0 -y 0 -w 936 -h 2800
-CropImage -s "C:\Users\vital\Documents\IMG_20260125_0009.jpg" -d "C:\Users\vital\Documents\Finanzen\2025\04 Rohdaten\Benzin Rechnungen\Scan 35.jpg" -x 0 -y 0 -w 936 -h 2800
-CropImage -s "C:\Users\vital\Documents\IMG_20260125_0010.jpg" -d "C:\Users\vital\Documents\Finanzen\2025\04 Rohdaten\Benzin Rechnungen\Scan 36.jpg" -x 0 -y 0 -w 936 -h 2800
-CropImage -s "C:\Users\vital\Documents\IMG_20260125_0011.jpg" -d "C:\Users\vital\Documents\Finanzen\2025\04 Rohdaten\Benzin Rechnungen\Scan 37.jpg" -x 0 -y 0 -w 936 -h 2800
-CropImage -s "C:\Users\vital\Documents\IMG_20260125_0012.jpg" -d "C:\Users\vital\Documents\Finanzen\2025\04 Rohdaten\Benzin Rechnungen\Scan 38.jpg" -x 0 -y 0 -w 936 -h 2800
-#>
-
-
-# Überweisung
-# CropImage -s "$strSourcePath\014.jpg" -d "$strDestPath\20230109 �berweisung an Frommer.jpg" -x 0 -y 0 -w 1800 -h 1250
-# CropImage -s "$strSourcePath\015.jpg" -d "$strDestPath\20230109 �berweisung an Frommer.jpg" -x 0 -y 0 -w 1800 -h 1250
-
-# Kontoauszug, GEZ
-# CropImage -s $strSourcePath -d $strDestPath -x 0 -y 0 -w 2480 -h 1250
-
-## Lange Screenshots ##
-# Auflösung eines langen Screenshots: 1440 * 30150
-# Auflösung eines normalen Screenshots: 1440 * 3216
-#[String] $strSourcePath = "C:\Users\vital\Progs\CropImage\Screenshots\Screenshot_2023-04-18-07-46-22-67.jpg"
-#[String] $strDestPath = "C:\Users\vital\Progs\CropImage\Screenshots\Cut\Test.jpg"
-#CropImage -s $strSourcePath -d $strDestPath -x 0 -y 0 -w 1440 -h 3216
-
-# Bewirtungsbeleg / Din A4-Scan vom alten Canon-Drucker
-# CropImage -s "$strSourcePath\003.jpg" -d "$strDestPath\20240110 Zahlungsverpflichtung, unterschrieben.jpg" -x 0 -y 0 -w 2492 -h 3504
-
-#[String] $strSourcePath = "C:\Users\vital\Music\Sophias Hörbücher\Was ist was\input\Bienen und Wespen - Im Gespräch mit einer Drohne.jpeg" 
-#[String] $strDestPath = "C:\Users\vital\Music\Sophias Hörbücher\Was ist was\output\Bienen und Wespen - Im Gespräch mit einer Drohne.jpeg"
-#CropImage -s $strSourcePath -d $strDestPath -p 0.35
